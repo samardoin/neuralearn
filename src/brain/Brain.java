@@ -51,8 +51,16 @@ public class Brain {
         }
         
         //refresh middle node values
+        for (Neuron[] middle : middles) {
+            for (Neuron middle2 : middle){
+                middle2.update();
+            }
+        }
         
         //refresh output values
+        for (Neuron output : outputs){
+                output.update();
+        }
         
     }
     public double[] getOutVal(){
@@ -86,8 +94,8 @@ public class Brain {
                 place++;
             }
         }
-        
-        if (place+1 != ssize) throw new RuntimeException("Error:Brain:getOutNum:" + place);
+        //TODO
+        //if (place+1 != ssize) throw new RuntimeException("Error:Brain:getOutNum:" + place);
         
         return result;
     }

@@ -26,6 +26,7 @@ public class Neuron {
         correct = 0.0;
         prevSynapses = new Synapse[prevNeurons.length];
         for (int i = 0; i < prevSynapses.length;i++){
+            prevSynapses[i] = new Synapse();
             prevSynapses[i].reset(prevNeurons[i]);
         }
     }
