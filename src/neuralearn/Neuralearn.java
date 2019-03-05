@@ -1,21 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package neuralearn;
 
-/**
- *
- * @author samuelardoin
- */
-public class Neuralearn {
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class Neuralearn extends Application{
+    public static final double  WINDOW_WIDTH  = 800, 
+                                WINDOW_HEIGHT = 600, 
+                                CANVAS_WIDTH  = WINDOW_WIDTH, 
+                                CANVAS_HEIGHT = WINDOW_HEIGHT - 22;
+    public static Color bg_color = Color.RED;
+
+    private Canvas canvas;
+    private GraphicsContext ctx;
+    
+    @Override
+    public void start(Stage primaryStage){
+        BorderPane borderPane = new BorderPane();
+
+        canvas = new Canvas(CANVAS_WIDTH,CANVAS_HEIGHT);
+        ctx = canvas.getGraphicsContext2D();
+
+        borderPane.setCenter(canvas);
+
+        Scene scene = new Scene(borderPane);
+
+        primaryStage.setScene(scene);
+        primaryStage.setWidth(WINDOW_WIDTH);
+        primaryStage.setHeight(WINDOW_HEIGHT);
+        //primaryStage.setResizable(false);
+
+        ctx.setFill(bg_color);
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        
+
+        primaryStage.show();
     }
     
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }
