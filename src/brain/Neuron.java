@@ -44,8 +44,8 @@ public class Neuron {
         this.isUpdated=true;
     }
     
-    private double mush(double val){
-        return val;
+    private double mush(double x){
+        return (2 * (1/(1+Math.pow(Math.E, x*-1))))-1;
     }
     
 

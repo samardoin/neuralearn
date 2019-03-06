@@ -3,17 +3,19 @@ package neuralearn;
 import brain.Brain;
 import javafx.scene.paint.Color;
 import javafx.scene.canvas.GraphicsContext;
+import tools.STools;
 
 public class Animal {
     public static final double  WIDTH  = 10.0 ,
                                 HEIGHT = 10.0 ;
-    private static final Color ANIMAL_COLOR = Color.RED;
+    private Color ANIMAL_COLOR ;
     
     public Cord cord = new Cord(Plane.WIDTH/2,Plane.HEIGHT);
     private Brain brain = new Brain();
     private double score = 0.0;
     
     public Animal(){
+        ANIMAL_COLOR = Color.rgb(100, STools.ranIntInclusive(100, 255), STools.ranIntInclusive(100, 255), 1);
         brain.update(new double[]{cord.x,cord.y,Plane.food.getX(),Plane.food.getY()});
         //drawAnimal(ctx);
     }
@@ -30,6 +32,7 @@ public class Animal {
     
     public void update(GraphicsContext ctx){
         double leapsize = 1;
+        
         brain.update(new double[]{cord.x,cord.y,Plane.food.getX(),Plane.food.getY()});
         int move = brain.getOutNum()[0];
         switch(move){

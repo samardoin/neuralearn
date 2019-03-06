@@ -3,7 +3,7 @@ package brain;
 import tools.STools;
 
 public class Synapse {
-    public static final double  MUL_MIN = 0.0 , 
+    public static final double  MUL_MIN = -1.0 , 
                                 MUL_MAX = 1.0 ;
     
     

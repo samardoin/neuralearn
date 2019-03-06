@@ -76,16 +76,19 @@ public class Brain {
     public int[] getOutNum(){//TODO optimize!!!
         int result[];
         int ssize=1;
+        int fp = 0;
         double large = outputs[0].getValue();
         for (int i = 1; i < outputs.length;i++){
             if (outputs[i].getValue() > large){
                 large = outputs[i].getValue();
                 ssize = 1;
+                fp = i;
             }
             else if (outputs[i].getValue() == large){
                 ssize++;
             }
         }
+        //return new int[]{fp};
         result = new int[ssize];
         int place = 0;
         for (int i = 0; i < outputs.length;i++){
@@ -94,8 +97,9 @@ public class Brain {
                 place++;
             }
         }
-        //TODO
+        //System.out.println("place+1:" + (result.length) + "\tssize:" + ssize);
         //if (place+1 != ssize) throw new RuntimeException("Error:Brain:getOutNum:" + place);
+        if (result.length != ssize) throw new RuntimeException("Error:Brain:getOutNum:" + place);
         
         return result;
     }

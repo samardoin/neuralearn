@@ -2,6 +2,7 @@ package neuralearn;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -54,23 +55,14 @@ public class Neuralearn extends Application{
         plane = new Plane(ctx);
         primaryStage.show();
         
-        Thread thread = new Thread(){
+        
+        AnimationTimer timer = new AnimationTimer() {
             @Override
-            public void run(){
-                for (int i = 0; true; i++){
-                    if (!stageOpen) {
-                        break;
-                    }
-                    plane.update();
-                    try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Neuralearn.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+            public void handle(long now) {
+                plane.update();
             }
         };
-        thread.start();
+        timer.start();
         
         System.out.println("out");
         //plane.update();

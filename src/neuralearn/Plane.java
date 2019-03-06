@@ -13,21 +13,22 @@ public class Plane {
     
     public Plane(GraphicsContext ctx){
         this.ctx = ctx;
-        int animalsAmt = 10;
+        int animalsAmt = 200;
         animals = new Animal[animalsAmt];
         for (int i = 0 ; i < animalsAmt; i++){
             animals[i] = new Animal();
-            animals[i].cord.set(    STools.ranDobInclusive(0.0, 20.0) , 
-                                    STools.ranDobInclusive(0.0, 20.0) );
+            animals[i].cord.set(Neuralearn.CANVAS_WIDTH/2.0,Neuralearn.CANVAS_HEIGHT/2.0);
         }
         
     }
     
     public void update(){
-        for (Animal animal : animals){
-            ctx.setFill(Color.GHOSTWHITE);
-            ctx.fillRect(0, 0, Neuralearn.CANVAS_WIDTH, Neuralearn.CANVAS_HEIGHT);
+        ctx.setFill(Color.GHOSTWHITE);
+        ctx.fillRect(0, 0, Neuralearn.CANVAS_WIDTH, Neuralearn.CANVAS_HEIGHT);
+        int j = 0;
+        for (Animal animal : animals){           
             animal.update(ctx);
+            //System.out.println("A:" + ++j);
             
         }
     }
