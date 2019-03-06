@@ -3,12 +3,12 @@ package brain;
 public class Brain {
     public static final int INPUT_LENGTH = 4;
     public static final int OUTPUT_LENGTH = 4;
-    public static final int MID_LENGTH = 4;
-    public static final int MID_LAYERS = 2;
+    public static final int MID_LENGTH = 8;
+    public static final int MID_LAYERS = 4;
     
-    private Neuron[] inputs = new Neuron[OUTPUT_LENGTH];
+    private Neuron[] inputs = new Neuron[INPUT_LENGTH];
     private Neuron[][] middles = new Neuron[MID_LAYERS][MID_LENGTH];
-    private Neuron[] outputs = new Neuron[INPUT_LENGTH];
+    private Neuron[] outputs = new Neuron[OUTPUT_LENGTH];
     
     public Brain(){
         //set inputs
@@ -63,6 +63,20 @@ public class Brain {
         }
         
     }
+    public double getinput(int index){
+        if (index >= INPUT_LENGTH) throw new RuntimeException("Error:index >- len(inputs)");
+        return inputs[index].getValue();
+    }
+    public double getmiddle(int layer, int index){
+        if (layer >= middles.length || index >= middles[0].length)
+            throw new RuntimeException("Error:index >- len(middle[][])");
+        return middles[layer][index].getValue();
+    }
+    public double getoutput(int index){
+        if (index >= OUTPUT_LENGTH) throw new RuntimeException("Error:index >- len(output)");
+        return outputs[index].getValue();
+    }
+    
     public double[] getOutVal(){
         double[] result = new double[OUTPUT_LENGTH];
         

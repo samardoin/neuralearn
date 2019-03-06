@@ -13,7 +13,7 @@ public class Plane {
     
     public Plane(GraphicsContext ctx){
         this.ctx = ctx;
-        int animalsAmt = 200;
+        int animalsAmt = 500;
         animals = new Animal[animalsAmt];
         for (int i = 0 ; i < animalsAmt; i++){
             animals[i] = new Animal();
@@ -29,8 +29,8 @@ public class Plane {
         for (Animal animal : animals){           
             animal.update(ctx);
             //System.out.println("A:" + ++j);
-            
         }
+        animals[0].drawBrain(ctx);
     }
     
     

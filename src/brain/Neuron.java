@@ -12,7 +12,7 @@ public class Neuron {
     public double getValue(){
         if (!isUpdated)
             throw new RuntimeException("Error:Neuron must be updated to get value.");
-        return value;
+        return this.value;
     }
     
     public void setNewStartNeuron(double newValue){
@@ -41,10 +41,15 @@ public class Neuron {
         rawVal+=correct;
         rawVal = mush(rawVal);
         this.value=rawVal;
+        //System.out.println("RawVal:" + this.value);
         this.isUpdated=true;
     }
     
     private double mush(double x){
+        return (2 * (1/(1+Math.pow(Math.E, x*-1))))-1;
+    }
+    
+    public static double MUSH(double x){
         return (2 * (1/(1+Math.pow(Math.E, x*-1))))-1;
     }
     
